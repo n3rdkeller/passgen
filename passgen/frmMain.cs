@@ -28,7 +28,14 @@ namespace passgen
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            tbxPasses.Lines = GenPasses(Convert.ToInt16(numLength.Value), Convert.ToInt16(numCount.Value), chkUppers.Checked, chkLowers.Checked, chkNumbers.Checked, chkSymbols.Checked);
+            if (chkLowers.Checked | chkNumbers.Checked | chkSymbols.Checked | chkUppers.Checked)
+            {
+                tbxPasses.Lines = GenPasses(Convert.ToInt16(numLength.Value), Convert.ToInt16(numCount.Value), chkUppers.Checked, chkLowers.Checked, chkNumbers.Checked, chkSymbols.Checked);
+            }
+            else
+            {
+                tbxPasses.Text = "No option selected!";
+            }
         }
 
         private string[] GenPasses(int Length, int Count, bool Uppers, bool Lowers, bool Numbers, bool Symbols)
